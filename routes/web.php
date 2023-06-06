@@ -11,3 +11,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/profile', function () {
+    return view('admin.profile');
+})->name('admin.profile');
