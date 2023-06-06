@@ -10,4 +10,4 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

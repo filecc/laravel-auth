@@ -15,10 +15,8 @@ dashboard
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             Hello
-
                         </div>
                     @endif
-                        hello
                     {{ __('You are logged in!') }}
                 </div>
             </div>

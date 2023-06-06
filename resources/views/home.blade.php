@@ -3,6 +3,6 @@
 @section('content')
 <div class="container">
     <h1>Portoflio</h1>
-    <a href="{{route('dashboard')}}">Dashboard</a>
+    <a href="{{route('admin.dashboard')}}">Dashboard</a>
 </div>
 @endsection
