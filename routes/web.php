@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Models\Project;
 
 Route::get('/', function () {
-    $projects = Project::all();
+    $projects = Project::paginate(3);
     return view('home', compact('projects'));
 });
 
