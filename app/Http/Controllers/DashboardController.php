@@ -24,7 +24,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $projects = Project::all();
+        return view('admin.dashboard', compact('projects'));
     }
 
     public function create()
@@ -42,4 +43,11 @@ class DashboardController extends Controller
 
         return redirect()->route('admin.index');
     }
+
+    public function destroy(Project $project)
+    {
+        $project->delete();
+        return redirect()->route('admin.index');
+    }
+
 }

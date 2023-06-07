@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::resource('projects', ProjectsController::class);
 Route::resource('admin', DashboardController::class);
 
-Route::resource('projects', ProjectsController::class);
+

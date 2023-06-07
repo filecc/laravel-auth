@@ -16,10 +16,7 @@
                     <a href="{{route('projects.show', $project)}}">Leggi tutto</a>
                 </div>
                 <div style="max-height: 300px" class="col-5 overflow-hidden">
-
                         <img class="w-100" src="{{$project->image}}" alt="{{$project->title}}">
-
-
                 </div>
             </div>
 
