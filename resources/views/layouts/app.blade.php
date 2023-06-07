@@ -20,9 +20,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-uppercase" href="{{ url('/') }}">
+                <p class="navbar-brand text-uppercase m-0 p-0">
                     @yield('title', 'Portfolio')
-                </a>
+                </p>
+                <a class="navbar-brand text-uppercase ms-4" href="{{ url('/') }}">home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -55,12 +56,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}">
                                         Dashboard
                                        </a>
-                                    <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                                    {{-- <a class="dropdown-item" href="{{ route('admin.profile') }}">
                                      Profile
-                                    </a>
+                                    </a> --}}
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

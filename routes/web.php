@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProjectsController;
 use App\Models\Project;
 
 Route::get('/', function () {
-    $projects = Project::paginate(3);
+    $projects = Project::paginate(5);
     return view('home', compact('projects'));
 });
 
 Auth::routes();
 
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/profile', function () {
-    return view('admin.profile');
-})->name('admin.profile');
+Route::resource('admin', DashboardController::class);
+
+Route::resource('projects', ProjectsController::class);
