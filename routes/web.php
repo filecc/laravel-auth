@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Models\Project;
 
 Route::get('/', function () {
-    return view('home');
+    $projects = Project::all();
+    return view('home', compact('projects'));
 });
 
 Auth::routes();
