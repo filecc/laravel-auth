@@ -35,19 +35,36 @@ class DashboardController extends Controller
 
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'title' => ['required', 'max:255', 'min:5'],
+            'image' => ['required'],
+            'content' => ['required', 'min:10'],
+            'status' => ['required'],
+        ]);
+
         $data = $request->all();
 
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('projects.show', $newProject);
     }
 
-    public function destroy(Project $project)
+    public function update(Request $request, Project $project)
     {
-        $project->delete();
-        return redirect()->route('admin.index');
+        $validatedData = $request->validate([
+            'title' => ['required', 'max:255', 'min:5'],
+            'image' => ['required'],
+            'content' => ['required', 'min:10'],
+            'status' => ['required'],
+        ]);
+
+        $data = $request->all();
+        $project->update($data);
+        return redirect()->route('projects.show', $project)->with('message', "Project '{$project->title}' (id: {$project->id}) modificato.");
     }
+
 
 }

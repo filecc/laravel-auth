@@ -42,18 +42,25 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required', 'max:255', 'min:5'],
+            'image' => ['required'],
+            'content' => ['required', 'min:10'],
+            'status' => ['required'],
+        ]);
+
+        $data = $request->all();
+        $project->update($data);
+        return redirect()->route('projects.show', $project)->with('message', "Project '{$project->title}' (id: {$project->id}) modificato.");
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -61,6 +68,6 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('message', "Project '{$project->title}' (id: {$project->id}) cancellato.");
     }
 }
