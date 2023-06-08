@@ -19,6 +19,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Created At</th>
                         <th scope="col">Status</th>
+                        <th>Technologies</th>
                         <th class="text-end" scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -28,6 +29,11 @@
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->created_at }}</td>
                             <td>{{ $project->status }}</td>
+                            <td>
+                                @foreach ($project->technologies as $tech)
+    <span class="badge rounded-pill text-bg-primary text-capitalize">{{$tech->technology}}</span>
+    @endforeach
+                            </td>
                             <td class="text-end">
                                 <a class="btn btn-info" href="{{ route('projects.show', $project) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
